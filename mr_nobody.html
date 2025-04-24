@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Urwa Hijab 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fff0f5;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 2rem;
+      color: #6b0f1a;
+    }
+    .sparkles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      pointer-events: none;
+      animation: sparkle 10s linear infinite;
+      opacity: 0.3;
+      z-index: 1;
+    }
+    @keyframes sparkle {
+      from { background-position: 0 0; }
+      to { background-position: 500px 500px; }
+    }
+    .birthday {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      z-index: 2;
+      position: relative;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin: 0.2rem 0;
+      z-index: 2;
+      position: relative;
+    }
+    .gallery {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+      z-index: 2;
+      position: relative;
+    }
+    .photo {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      max-width: 700px;
+      z-index: 2;
+      position: relative;
+    }
+    .proposal {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 1.5rem 0;
+      z-index: 2;
+      position: relative;
+    }
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      z-index: 2;
+      position: relative;
+      flex-wrap: wrap;
+    }
+    .buttons button {
+      font-size: 1.1rem;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 12px;
+      background-color: #f8c8dc;
+      color: #6b0f1a;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .buttons button:hover {
+      background-color: #fbb1cd;
+    }
+    .countdown {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      z-index: 2;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="sparkles"></div>
+  <h2 class="birthday">Happy Birthday, Urwa! 🎂</h2>
+  <h1>For the One Who Stole My Heart at First Sight</h1>
+
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop" alt="Couple Photo 1" class="photo" />
+    <img src="https://images.unsplash.com/photo-1533089860892-a7a48a5e1284?w=200&h=200&fit=crop" alt="Couple Photo 2" class="photo" />
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop" alt="Couple Photo 3" class="photo" />
+  </div>
+
+  <p>Jab pehli baar meinay apni class mein usay dekha,<br>
+  Mujhe pehli nazar mein us se pyaar ho gaya.</p>
+  <p>Tum woh pehli nazar ka jadoo ho jo dil ko chhoo gaya...<br>
+  Urwa, har pal tumse juda hai, har khushi tumse hai.</p>
+
+  <div class="proposal">Kya tum meri zindagi banogi, Urwa?</div>
+  <div class="buttons">
+    <button id="yesBtn">Yes, I will 💍</button>
+    <button id="noBtn">Hmm... Think again 😢</button>
+  </div>
+
+  <div class="countdown" id="countdown"></div>
+
+  <audio autoplay loop>
+    <source src="https://www.dropbox.com/s/kx9j61vuwqf76dw/Pehli_Nazar_Mein.mp3?raw=1" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Confetti on Yes
+    document.getElementById('yesBtn').addEventListener('click', function() {
+      confetti({ particleCount: 200, spread: 70, origin: { y: 0.6 } });
+      alert('She said YES! 💍🎉');
+    });
+    document.getElementById('noBtn').addEventListener('click', function() {
+      alert('Oh no! Try again with flowers 🌹');
+    });
+
+    // Countdown to special date
+    const birthday = new Date('2025-05-08T00:00:00').getTime();
+    const countdownEl = document.getElementById('countdown');
+    function updateCountdown() {
+      const now = new Date().getTime();
+      let distance = birthday - now;
+      if (distance < 0) {
+        countdownEl.textContent = "Enjoy your special day!";
+        clearInterval(interval);
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownEl.textContent = `Time till your special day: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
